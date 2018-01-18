@@ -1,0 +1,9 @@
+extends layout
+
+block content
+	h1 Your car is slower than the #{results.length} cars you see below.
+	P
+		| 
+		ul
+			each car, i in results
+				li #{car.year} #{car.make} #{car.model} (#{car.zero60}s)

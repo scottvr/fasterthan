@@ -1,0 +1,10 @@
+extends layout
+
+block content
+	h1 
+		Faster than #{results.length} cars!
+	p 
+		This puts your vehicle in #{place} place, out of #{total} times recorded in database.
+		ul
+			each car, i in results
+				li #{car.year} #{car.make} #{car.model} (#{car.zero60}s)

@@ -1,0 +1,305 @@
+html {
+    overflow-y: scroll;
+}
+BODY
+{
+	font-family: "Roboto", Verdana, Helvetica, Sans-Serif;
+	background-color: #fff;
+	margin: 20px auto 0 auto;
+	color: #555;
+}
+#maincontent
+{
+	width: 900px;
+	background-color: white;
+	margin: 0 auto;
+}
+#logo
+{
+    float: left;
+    background: transparent url(logo.png) no-repeat;    
+    height: 58px;
+    display: block;
+    padding: 25px 0 0 80px;
+}
+#share {
+    float: right;
+    margin-top: 35px;
+}
+#Calculator
+{
+	background-color: #fff;	
+	padding: 20px 10px;
+	font-size: 18px;
+	width: 570px;
+	float: left;
+	color: #888;
+}
+#Calculator th
+{
+	font-weight: normal;
+	text-align: right;	
+}
+#Calculator input
+{
+	font-size: 20px;
+}
+#Calculator select
+{
+	font-size: 20px;
+}    
+#CalculatorSettings
+{
+	float: right; padding: 25px 0; background-color: #eee; width: 300px; color: #888;
+	border: 1px solid #ccc;
+}
+    #CalculatorSettings #Permalink {
+        clear: both;
+        display: block;
+        font-size: 13px;
+        font-style: italic;
+        margin-top: 10px;
+    }
+#Results
+{		
+	margin-top: 10px;
+	padding: 15px 0 0 0;
+	color: #999;
+	text-align: center;
+	width: 100%;
+	font-size: 16px;
+	border-top: 1px solid #ccc;
+}
+#Results strong
+{
+	color: #f40;
+	font-size: 24px;	
+}
+#Article {
+    padding: 25px 25px 25px 0; width: 500px; float: left;
+}
+#Ad {
+    padding: 25px 0 25px 0; width: 300px; float: right;
+}
+
+ul {
+	list-style-type: none;
+	padding: 0;
+}
+
+ul > li > a {
+	display: block;
+	padding: 10px;
+	margin: 5px -10px;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	transition: background-color ease-out 0.2s;
+}
+
+ul>li>a:hover, ul>li>a:active {
+	border-color: #f40;
+	background-color: #f40;
+	color: white;
+	text-decoration: none;
+}
+	ul > li > a:active {
+		border-color: black;
+	}
+
+#ad-banner {
+    margin: 10px auto;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    padding: 10px 0;
+}
+hr
+{
+	color: #ccc;
+	background-color: #ccc;
+	height: 1px;
+	border: 0;
+}
+br
+{
+	clear: both;
+}
+A{text-decoration: underline;color: #555;}
+A:hover{color: #000;}
+TD{font-family: Verdana, Arial;font-size: 10pt;}
+H1{font-size: 30px; margin: 0;color: #f40; font-family: "Roboto", sans-serif; font-weight: normal;}
+    H1 b {
+        font-family: "Roboto";
+        font-weight: bold;
+    }
+H2{font-size: 16pt; margin: 0; font-weight: normal; font-family: "Roboto", sans-serif; font-weight: normal;}
+    H2 b {
+        font-family: "Roboto";
+        font-weight: bold;
+    }
+H3{font-size: 14pt; margin: 0;}
+H4{font-size: 12pt; margin: 0;}
+P{margin-top: 0;}
+
+#copyright {
+    clear: both;
+    font-size: 10pt;
+    text-align: center;
+    margin: 25px 0;
+}
+
+#car-trims {
+    float: left;
+    width: 400px;
+	display: block;
+}
+#car-trim-list {
+    margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+    #car-trim-list li {
+    }	
+		/*#car-trim-list li a {
+	        margin: 5px 0;		
+			padding: 5px 10px;
+			display: block;
+			border: #ccc solid 1px;
+			border-radius: 5px;
+			background: #eee;
+			background: linear-gradient(to bottom, #fff 0%,#eee 100%);
+		}
+			#car-trim-list li a:hover {
+				border-color: #555;
+			}
+			#car-trim-list li a:active {
+				border-color: #f40;
+			}*/
+	#car-trim-list li.selected a {
+		background: #fff;
+		border-color: #fff;
+		color: black;
+    }
+
+#car-specs {
+    float: left;
+    width: 250px;
+}
+#car-time {
+    float: left;
+    width: 250px;
+    margin-top: 85px;
+}
+
+
+.ZeroToSixty {
+    color: #f40;
+    font-size: 30px;
+}
+
+li.selected {
+    font-weight: bold;
+    color: black;
+}
+    li.selected a {
+        text-decoration: none;
+    }
+
+#homepage-browsemakes-container {
+    background-color: #eee;
+    width: 100%;
+    padding: 25px 0;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}
+
+#homepage-browsemakes {
+    margin: 0 auto;
+    width: 900px;   
+}
+    #homepage-browsemakes h2 {
+        color: #888;
+        font-weight: normal;
+        font-size: 18px;
+        margin: 0 0 0 0;
+    }
+    #homepage-browsemakes ul {
+        float: left;
+        margin: 0 5% 0 0;
+        padding: 0;
+        list-style-type: none;
+        font-size: 16px;
+		width: 20%;
+    }
+    #homepage-browsemakes li {
+        padding: 0;
+        margin: 12px 0;
+    }   
+
+
+@media screen and (max-width: 920px) {
+    body {
+        font-size: 10pt;
+        margin: 10px;
+    }
+    h1 {
+        font-size: 20pt;
+    }
+    #logo {
+        background-image: none;
+        padding: 0;
+        height: inherit;
+        float: none;
+    }
+    #share {
+        margin: 10px 0;
+        float: none;
+    }
+	#maincontent {
+		width: 100%;
+	}
+	#Calculator {
+		float: none;
+        width: 100%;
+        padding: 0;
+	}
+	#CalculatorSettings {
+		float: none;
+        width: 100%;
+        margin-top: 20px;
+        border-left-width: 0;
+        border-right-width: 0;
+	}
+    #Article {
+        float: none;
+        width: 100%;
+        padding: 0;
+    }
+    #Ad {
+        float: none;
+    }
+    #homepage-browsemakes-container {
+        background-color: #fff;
+    }
+    #homepage-browsemakes {
+        width: 100%;
+    }
+    #homepage-browsemakes ul {
+        float: none;
+        margin: 0;
+		width: 100%;
+    }
+		
+	#car-specs, #car-time, #car-trims {
+		float: none;
+		margin: 10px 0;
+		width: 100%;
+	}
+}
+
+@media screen and (max-width: 500px) {
+    h1 {
+        font-size: 16pt;
+    }
+}
+
+

@@ -1,0 +1,13 @@
+extends layout
+
+block content
+	h1 
+		
+		| Your car is ranked #{place} out of #{total} vehicles in our 
+		a(href="/fasterthan/show_zero60") database!
+	p It is faster than the #{results.length} cars you see below.
+		| 
+		a(href="/fasterthan/check_zero60t") [test  - sorted by time]
+		ul
+			each car, i in results
+				li #{car.year} #{car.make} #{car.model} (#{car.zero60}s)

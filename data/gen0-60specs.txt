@@ -1,0 +1,408 @@
+@DATA = (<DATA>);
+
+print "[\n";
+
+while($_ = shift(@DATA)) {
+    chomp;
+	s/[\n\r]//g;
+next unless ( /^\w+\s.+sec.+mph.+$/);
+    ($mm,$year,$drive,$trans,$zero60,$quartermi,$source) = split(/\t/,$_);
+    ($make,$model) = ($mm =~ /(\w+)\s+(.+)/);
+	$zero60 =~ s/\s+sec//;
+	$quartermi =~ s/^(\d+\.?\d*).+/$1/;
+    print  qq/\{"make":"$make","model":"$model","year":"$year","zero60":$zero60,"quartermi":$quartermi\},\n/;
+}
+print "\n]\n";
+__DATA__
+MAKE & MODEL	YEAR	DRIVE TYPE	TRANS.	0-60	1/4 MILE	SOURCE
+Acura ILX	2013	FWD	6M	6.4 sec	14.9 sec @ 94.1 mph	Motor Trend
+Acura MDX	2016	AWD	9A	5.9 sec	14.6 sec @ 95 mph	Car and Driver
+Acura NSX	2017	AWD	9A	3.1 sec	11.2 sec @ 124.3 mph	Road & Track
+Acura RDX	2013	AWD	6A	6.2 sec	14.8 sec @ 95.1 mph	Motor Trend
+Acura RLX	2014	FWD	6A	5.8 sec	14.3 sec @ 97.8 mph	Motor Trend
+Acura TL	2010	AWD	6M	5.2 sec	13.7 sec @ 102.3 mph	Road & Track
+Acura TLX	2015	FWD	9A	5.7 sec	14.2 sec @ 103 mph	Car and Driver
+Alfa Romeo 4C	2015	RWD	6A	4.1 sec	12.8 sec @ 104.8 mph	Motor Trend
+Aston Martin DB9	2013	RWD	6A	4.1 sec	12.4 sec @ 115.7 mph	Motor Trend
+Aston Martin Rapide S	2014	RWD	6A	4.5 sec	12.9 sec @ 111.2 mph	Motor Trend
+Aston Martin Vanquish	2015	RWD	8A	3.6 sec	--- -- sec @ --- -- mph	Aston Martin
+Aston Martin Vantage	2015	RWD	7A	3.9 sec	12.1 sec @ 120.5 mph	Road & Track
+Audi A3	2015	AWD	6A	5.4 sec	14.0 sec @ 98.6 mph	Motor Trend
+Audi A4	2017	AWD	7A	5.2 sec	13.9 sec @ 100 mph	Car and Driver
+Audi A5	2008	AWD	6M	5.8 sec	14.3 sec @ 96 mph	Car and Driver
+Audi A6	2016	AWD	8A	4.4 sec	13.0 sec @ 107 mph	Motor Trend
+Audi A7	2012	AWD	8A	4.7 sec	13.3 sec @ 103.5 mph	Motor Trend
+Audi A8	2013	AWD	8A	3.9 sec	12.4 sec @ 112 mph	Car and Driver
+Audi Allroad	2014	AWD	8A	6.3 sec	14.9 sec @ 92 mph	Car and Driver
+Audi Q3	2016	AWD	6A	7.7 sec	16.1 sec @ 89 mph	Motor Week
+Audi Q5	2013	AWD	8A	5.5 sec	14.1 sec @ 96.5 mph	Motor Trend
+Audi Q7	2017	AWD	8A	5.4 sec	14.0 sec @ 100.2 mph	Motor Trend
+Audi R8	2017	AWD	7A	2.6 sec	10.6 sec @ 129.8 mph	Motor Trend
+Audi RS 5	2014	AWD	7A	3.9 sec	12.3 sec @ 112.2 mph	Motor Trend
+Audi RS 7	2014	AWD	8A	2.9 sec	11.0 sec @ 129 mph	Car and Driver
+Audi S3	2015	AWD	6A	4.4 sec	12.9 sec @ 108 mph	Car and Driver
+Audi S4	2010	AWD	6M	4.4 sec	12.9 sec @ 108.9 mph	Motor Trend
+Audi S5	2008	AWD	6M	4.5 sec	13.1 sec @ 105.2 mph	Motor Trend
+Audi S6	2013	AWD	7A	3.7 Sec	12.1 sec @ 115 mph	Car and Driver
+Audi S7	2013	AWD	7A	3.9 sec	12.3 sec @ 112.1 mph	Motor Trend
+Audi S8	2016	AWD	8A	3.3 sec	11.6 sec @ 121 mph	Car and Driver
+Audi SQ5	2015	AWD	8A	4.4 sec	13.1 sec @ 104.2 mph	Motor Trend
+Audi TT	2008	AWD	6A	3.5 sec	11.7 sec @ 120.1 mph	Road & Track
+Audi TTS	2016	AWD	6A	4.2 sec	12.8 sec @ 108 mph	Car and Driver
+Bentley Bentayga	2017	AWD	8A	3.5 sec	11.9 sec @ 117.1 mph	Motor Trend
+Bentley Continental	2015	AWD	8A	3.3 sec	11.6 sec @ 120.1 mph	Road & Track
+Bentley Continental Flying Spur	2009	AWD	6A	4.2 sec	12.8 sec @ 110 mph	Car and Driver
+Bentley Mulsanne	2016	RWD	8A	4.8 sec	13.5 sec @ 105 mph	Car and Driver
+BMW 135	2010	RWD	6M	4.5 sec	13.0 sec @ 109.1 mph	Road & Track
+BMW 228i	2014	RWD	8A	4.9 sec	13.7 sec @ 101 mph	Car and Driver
+BMW 320i	2013	RWD	8A	6.5 sec	15.1 sec @ 92 mph	Car and Driver
+BMW 328	2016	RWD	8A	5.2 sec	13.9 sec @ 99 mph	Car and Driver
+BMW 330	2017	RWD	8A	5.4 sec	14.0 sec @ 100 mph	Car and Driver
+BMW 335	2007	RWD	6M	4.4 sec	12.9 sec @ 108.9 mph	Road & Track
+BMW 340i	2016	RWD	6M	4.8 sec	13.3 sec @ 106 mph	Car and Driver
+BMW 428i	2014	RWD	8A	5.3 sec	14.1 sec @ 99 mph	Car and Driver
+BMW 435i	2014	AWD	8A	4.5 sec	13.1 sec @ 107 mph	Car and Driver
+BMW 528i	2012	RWD	8A	5.9 sec	14.5 sec @ 96 mph	Car and Driver
+BMW 535	2009	RWD	6M	5.2 sec	13.8 sec @ 102 mph	Car and Driver
+BMW 550i	2011	RWD	8A	4.8 sec	13.1 sec @ 109 mph	Car and Driver
+BMW 640i	2016	RWD	8A	4.9 sec	13.6 sec @ 103 mph	Car and Driver
+BMW 650i	2016	RWD	8A	4.1 sec	12.6 sec @ 113 mph	Car and Driver
+BMW 740	2016	RWD	8A	4.8 sec	13.4 sec @ 105 mph	Car and Driver
+BMW 750	2016	AWD	8A	4.3 sec	12.7 sec @ 111.9 mph	Motor Trend
+BMW 760Li	2010	RWD	8A	4.1 sec	12.4 sec @ 115.5 mph	Motor Trend
+BMW ActiveHybrid	2011	RWD	8A	4.5 sec	12.8 sec @ 112 mph	Car and Driver
+BMW Alpina	2016	AWD	8A	3.3 sec	11.8 sec @ 116.6 mph	Motor Trend
+BMW i3	2015	RWD	1A	6.4 sec	15.3 sec @ 89 mph	Motor Trend
+BMW i8	2015	AWD	6A	3.6 sec	12.1 sec @ 116 mph	Car and Driver
+BMW M2	2016	RWD	7A	4.0 sec	12.5 sec @ 113 mph	Car and Driver
+BMW M235i	2014	RWD	8A	4.3 sec	12.9 sec @ 109 mph	Car and Driver
+BMW M240i	2017	RWD	8A	4.3 sec	12.7 sec @ 111 mph	Car and Driver
+BMW M3	2010	RWD	6M	3.1 sec	11.0 sec @ 129 mph	Car and Driver
+BMW M4	2016	RWD	7A	3.5 sec	11.7 sec @ 121 mph	Road & Track
+BMW M5	2013	RWD	7A	3.6 sec	11.9 sec @ 119.7 mph	Road & Track
+BMW M6	2014	RWD	7A	3.5 sec	11.7 sec @ 124 mph	Car and Driver
+BMW X1	2014	AWD	6A	5.2 sec	13.8 sec @ 102 mph	Car and Driver
+BMW X3	2015	AWD	8A	5.3 sec	13.9 sec @ 100 mph	Car and Driver
+BMW X4	2017	AWD	8A	4.4 sec	13.1 sec @ 105 mph	Car and Driver
+BMW X5	2015	AWD	8A	3.7 sec	12.2 sec @ 112.8 mph	Motor Trend
+BMW X6	2015	AWD	8A	3.7 sec	12.1 sec @ 114.3 mph	Motor Trend
+BMW Z4	2006	RWD	6M	4.6 sec	13.2 sec @ 107 mph	Car and Driver
+Bugatti Veyron 16.4	2011	AWD	7A	2.5 sec	9.9 sec @ 145.8 mph	Road & Track
+Cadillac ATS	2013	RWD	6A	5.4 sec	14.0 sec @ 101.6 mph	Road & Track
+Cadillac ATS-V	2016	RWD	8A	3.7 sec	12.1 sec @ 116.2 mph	Motor Trend
+Cadillac CT6	2016	AWD	8A	5.0 sec	13.4 sec @ 105 mph	Motor Trend
+Cadillac CTS	2014	RWD	8A	4.4 sec	12.8 sec @ 111.9 mph	Motor Trend
+Cadillac CTS-V	2007	RWD	6M	3.3 sec	11.1 sec @ 130.1 mph	Motor Trend
+Cadillac ELR	2014	FWD	1A	7.3 sec	15.8 sec @ 91.9 mph	Motor Trend
+Cadillac Escalade	2003	AWD	4A	4.0 sec	12.7 sec @ 106 mph	Car and Driver
+Cadillac SRX	2004	AWD	5A	6.4 sec	14.6 sec @ 96.3 mph	Motor Trend
+Cadillac XT5	2017	FWD	8A	6.4 sec	15.0 sec @ 91.4 mph	Motor Trend
+Cadillac XTS	2014	AWD	6A	5.2 sec	13.6 sec @ 105 mph	Car and Driver
+Chevrolet Bolt EV	2017	FWD	1A	6.3 sec	14.9 sec @ 93.1 mph	Motor Trend
+Chevrolet Camaro	2000	RWD	5M	3.0 sec	11.01 sec @ 128.64 mph	Car and Driver
+Chevrolet Colorado	2009	RWD	4A	6.7 sec	15.1 sec @ 92 mph	Car and Driver
+Chevrolet Corvette	2001	RWD	6M	1.97 sec	9.24 sec @ 150.27 mph	Motor Trend
+Chevrolet Cruze	2016	FWD	6A	7.6 sec	15.9 sec @ 89 mph	Car and Driver
+Chevrolet Equinox	2008	AWD	6A	6.9 sec	15.4 sec @ 90 mph	Car and Driver
+Chevrolet Express	2003	AWD	4A	8.7 sec	16.7 sec @ 83 mph	Car and Driver
+Chevrolet Impala	2006	FWD	4A	5.6 sec	14.2 sec @ 101 mph	Car and Driver
+Chevrolet Malibu	1998	FWD	5M	5.9 sec	14.6 sec @ 95.3 mph	Motor Trend
+Chevrolet Silverado 1500	2012	RWD	6A	5.0 sec	13.4 sec @ 103 mph	Callaway
+Chevrolet Silverado 2500HD	2011	4x4	6A	7.1 sec	15.5 sec @ 88 mph	Car and Driver
+Chevrolet Silverado 3500HD	2011	RWD	6A	7.0 sec	15.4 sec @ 87.9 mph	Motor Trend
+Chevrolet Sonic	2012	FWD	6M	8.1 sec	16.1 sec @ 86.4 mph	Motor Trend
+Chevrolet Spark	2014	FWD	1A	7.5 sec	16.0 sec @ 87.6 mph	Motor Trend
+Chevrolet SS	2014	RWD	6A	3.7 sec	11.9 sec @ 121 mph	Car and Driver
+Chevrolet Suburban	2012	4x4	6A	6.6 sec	15.1 sec @ 95 mph	Motor Week
+Chevrolet Tahoe	2015	RWD	6A	6.7 sec	15.1 sec @ 92 mph	Motor Trend
+Chevrolet Traverse	2010	FWD	6A	7.3 sec	15.8 sec @ 91 mph	Car and Driver
+Chevrolet Trax	2015	FWD	6A	9.0 sec	16.8 sec @ 80.9 mph	Motor Trend
+Chevrolet Volt	2016	FWD	CVT	7.1 sec	15.6 sec @ 85.7 mph	Motor Trend
+Chrysler 200	2016	FWD	9A	5.7 sec	14.3 sec @ 100 mph	Car and Driver
+Chrysler 300	2005	RWD	5A	4.3 sec	12.7 sec @ 114 mph	Motor Trend
+Chrysler Pacifica	2017	FWD	9A	6.7 sec	15.1 sec @ 92.4 mph	Motor Trend
+Chrysler Town & Country	2011	FWD	6A	7.6 sec	16.0 sec @ 87 mph	Car and Driver
+Dodge Challenger	2015	RWD	8A	3.6 sec	11.7 sec @ 126 mph	Car and Driver
+Dodge Charger	2015	RWD	8A	3.4 sec	11.4 sec @ 128 mph	Car and Driver
+Dodge Dart	1976	RWD	3A	7.3 sec	15.7 sec @ 88.3 mph	Car and Driver
+Dodge Durango	2016	AWD	8A	6.2 sec	14.7 sec @ 95 mph	Car and Driver
+Dodge Grand Caravan	2010	FWD	6A	7.6 sec	15.9 sec @ 86.5 mph	Motor Trend
+Dodge Journey	2013	AWD	6A	7.1 sec	15.7 sec @ 87 mph	Car and Driver
+Dodge Ram 1500	2005	RWD	4A	4.4 sec	12.4 sec @ 118 mph	Car and Driver
+Dodge Ram 2500 Heavy Duty	2010	4x4	5A	7.2 sec	15.4 sec @ 95 mph	Motor Week
+Dodge Viper	2001	RWD	6M	2.43 sec	10.71 sec @ 137.6 mph	Motor Trend
+Ferrari 458	2012	RWD	7A	3.0 sec	10.9 sec @ 132.5 mph	Road & Track
+Ferrari California T	2015	RWD	7A	3.3 sec	11.3 sec @ 128 mph	Car and Driver
+Ferrari LaFerrari	2015	RWD	7A	2.4 sec	9.7 sec @ 149.2 mph	Road & Track
+Fiat 124 Spider	2017	RWD	6M	6.3 sec	14.8 sec @ 93.5 mph	Motor Trend
+Fiat 500	2012	FWD	5M	6.7 sec	15.1 sec @ 92.5 mph	Road & Track
+Ford C-Max	2013	FWD	CVT	7.9 sec	16.1 sec @ 88 mph	Car and Driver
+Ford Edge	2015	AWD	6A	5.6 sec	14.2 sec @ 98 mph	Car and Driver
+Ford Escape	2013	AWD	6A	6.8 sec	15.2 sec @ 88.8 mph	Motor Trend
+Ford Expedition	2015	4x4	6A	6.4 sec	15.0 sec @ 92 mph	Car and Driver
+Ford Explorer	2013	AWD	6A	5.9 sec	14.5 sec @ 97 mph	Car and Driver
+Ford F-150	2017	4x4	10A	5.1 sec	13.8 sec @ 100 mph	Car and Driver
+Ford F-250 Super Duty	2017	4x4	6A	6.9 sec	15.3 sec @ 90.1 mph	Motor Trend
+Ford F-350 Super Duty	2017	4x4	6A	7.6 sec	15.8 sec @ 87.7 mph	Motor Trend
+Ford F-450 Super Duty	2015	4x4	6A	8.3 sec	16.3 sec @ 84.4 mph	Motor Trend
+Ford F-650 Super Duty	2012	RWD	6A	17.6 sec	21.0 sec @ 64.8 mph	Motor Trend
+Ford Fiesta	2014	FWD	6M	6.4 sec	14.9 sec @ 94.6 mph	Motor Trend
+Ford Flex	2013	AWD	6A	5.7 sec	14.2 sec @ 100 mph	Car and Driver
+Ford Focus	2004	RWD	6M	4.4 sec	12.7 sec @ 113.7 mph	Motor Trend
+Ford Fusion	2017	AWD	6A	5.1 sec	13.7 sec @ 101 mph	Car and Driver
+Ford GT	2006	RWD	6M	3.4 sec	11.1 sec @ 139 mph	Car and Driver
+Ford Mustang	2000	RWD	3A	1.9 sec	10.55 sec @ 135.05 mph	Car and Driver
+Ford Taurus	2010	AWD	6A	5.2 sec	13.6 sec @ 103.2 mph	Road & Track
+Ford Transit	2015	RWD	6A	7.5 sec	15.9 sec @ 88 mph	Car and Driver
+Ford Transit Connect	2014	FWD	6A	10.0 sec	17.5 sec @ 79 mph	Car and Driver
+Genesis G80	2017	AWD	8A	6.6 sec	15.0 sec @ 96 mph	Car and Driver
+Genesis G90	2017	RWD	8A	5.0 sec	13.5 sec @ 104.5 mph	Motor Trend
+Honda Accord	2013	FWD	6M	5.4 sec	13.9 sec @ 101.4 mph	Motor Trend
+Honda Civic	2004	FWD	6M	4.5 sec	12.7 sec @ 113.3 mph	Motor Trend
+Honda CR-V	2017	AWD	CVT	7.5 sec	15.8 sec @ 89 mph	Motor Trend
+Honda CR-Z	2011	FWD	6M	8.3 sec	16.4 sec @ 83.6 mph	Motor Trend
+Honda Fit	2015	FWD	6M	7.7 sec	16.1 sec @ 87 mph	Car and Driver
+Honda HR-V	2016	FWD	6M	8.4 sec	16.5 sec @ 84 mph	Car and Driver
+Honda Insight	2010	FWD	CVT	10.3 sec	17.9 sec @ 78 mph	Car and Driver
+Honda Odyssey	2011	FWD	6A	7.3 sec	15.6 sec @ 91 mph	Car and Driver
+Honda Pilot	2016	AWD	9A	6.0 sec	14.6 sec @ 95 mph	Car and Driver
+Honda Ridgeline	2017	AWD	6A	6.6 sec	15.2 sec @ 93 mph	Car and Driver
+Honda S2000	2001	RWD	6M	4.7 sec	13.3 sec @ 108 mph	Car and Driver
+Hyundai Accent	2012	FWD	6M	7.8 sec	16.3 sec @ 85.4 mph	Motor Trend
+Hyundai Azera	2006	FWD	5A	6.1 sec	14.8 sec @ 96 mph	Car and Driver
+Hyundai Elantra	2017	FWD	7A	7.8 sec	16.2 sec @ 87 mph	Car and Driver
+Hyundai Equus	2012	RWD	8A	5.5 sec	13.9 sec @ 102.7 mph	Motor Trend
+Hyundai Genesis	2012	RWD	8A	4.8 sec	13.3 sec @ 107.1 mph	Motor Trend
+Hyundai Santa Fe	2015	AWD	6A	6.6 sec	15.0 sec @ 94 mph	Car and Driver
+Hyundai Sonata	2011	FWD	6A	6.1 sec	14.5 sec @ 100 mph	Car and Driver
+Hyundai Tucson	2016	AWD	7A	7.4 sec	15.9 sec @ 88 mph	Car and Driver
+Hyundai Veloster	2016	FWD	6M	6.7 sec	15.0 sec @ 94 mph	Car and Driver
+Infiniti G35	2007	RWD	6M	5.2 sec	13.9 sec @ 102 mph	Car and Driver
+Infiniti G37	2009	RWD	7A	5.0 sec	13.5 sec @ 105.3 mph	Motor Trend
+Infiniti Q50	2016	RWD	7A	4.5 sec	13.0 sec @ 109.2 mph	Motor Trend
+Infiniti Q60	2014	RWD	7A	5.7 sec	14.1 sec @ 98.9 mph	Motor Trend
+Infiniti Q70	2015	AWD	7A	4.8 sec	13.4 sec @ 107 mph	Car and Driver
+Infiniti QX30	2017	FWD	7A	6.3 sec	14.9 sec @ 93.7 mph	Motor Trend
+Infiniti QX50	2016	RWD	7A	5.5 sec	14.1 sec @ 99.2 mph	Motor Trend
+Infiniti QX60	2017	AWD	CVT	7.1 sec	15.5 sec @ 93 mph	Car and Driver
+Infiniti QX70	2014	RWD	7A	6.1 sec	14.6 sec @ 96.2 mph	Motor Trend
+Infiniti QX80	2016	AWD	7A	6.2 sec	15.1 sec @ 95 mph	Car and Driver
+Jaguar F-Pace	2017	AWD	8A	5.1 sec	13.6 sec @ 103 mph	Car and Driver
+Jaguar F-Type	2017	AWD	8A	3.0 sec	11.2 sec @ 126.3 mph	Road & Track
+Jaguar XE	2017	RWD	8A	4.5 sec	12.9 sec @ 106.2 mph	Motor Trend
+Jaguar XF	2014	RWD	8A	3.7 sec	12.1 sec @ 118.3 mph	Road & Track
+Jaguar XJ	2014	RWD	8A	3.7 sec	12.1 sec @ 117.4 mph	Motor Trend
+Jaguar XK	2010	RWD	6A	4.0 sec	12.3 sec @ 119 mph	Car and Driver
+Jeep Cherokee	2016	4x4	9A	6.8 sec	15.3 sec @ 89.9 mph	Motor Trend
+Jeep Compass	2011	4x4	CVT	9.2 sec	17.3 sec @ 82 mph	Car and Driver
+Jeep Grand Cherokee	2007	4x4	5A	3.7 sec	12.2 sec @ 116 mph	Car and Driver
+Jeep Patriot	2007	4x4	5M	8.7 sec	16.6 sec @ 83 mph	Car and Driver
+Jeep Renegade	2015	AWD	9A	8.6 sec	16.5 sec @ 83 mph	Motor Week
+Jeep Wrangler	2014	4x4	6M	6.6 sec	15.3 sec @ 90 mph	Car and Driver
+Kia Cadenza	2014	FWD	6A	6.2 sec	14.8 sec @ 97 mph	Car and Driver
+Kia Forte	2014	FWD	6A	6.4 sec	14.9 sec @ 93 mph	Car and Driver
+Kia K900	2015	RWD	8A	5.5 sec	13.8 sec @ 103.2 mph	Motor Trend
+Kia Optima	2011	FWD	6A	6.1 sec	14.5 sec @ 99.4 mph	Road & Track
+Kia Rio	2012	FWD	6M	7.9 sec	16.4 sec @ 84.9 mph	Motor Trend
+Kia Sedona	2015	FWD	6A	7.4 sec	15.8 sec @ 91 mph	Car and Driver
+Kia Sorento	2011	AWD	6A	6.9 sec	15.3 sec @ 92 mph	Car and Driver
+Kia Soul	2012	FWD	6M	7.4 sec	16.0 sec @ 87 mph	Car and Driver
+Kia Sportage	2011	AWD	6A	6.1 sec	14.7 sec @ 96 mph	Car and Driver
+Lamborghini Aventador	2015	AWD	7A	2.6 sec	10.4 sec @ 134.7 mph	Motor Trend
+Lamborghini Gallardo	2009	AWD	6A	2.9 sec	10.4 sec @ 144 mph	Car and Driver
+Lamborghini Huracán	2015	AWD	7A	2.3 sec	9.8 sec @ 151 mph	VF Engineering
+Land Rover Discovery Sport	2015	AWD	9A	7.4 sec	15.8 sec @ 90 mph	Car and Driver
+Land Rover LR2	2008	AWD	6A	8.8 sec	16.7 sec @ 83.2 mph	Motor Trend
+Land Rover LR4	2010	AWD	6A	6.5 sec	15.0 sec @ 94 mph	Car and Driver
+Land Rover Range Rover	2013	AWD	8A	4.6 sec	13.1 sec @ 108.3 mph	Motor Trend
+Land Rover Range Rover Evoque	2013	AWD	6A	6.6 sec	15.1 sec @ 92 mph	Car and Driver
+Land Rover Range Rover Sport	2015	AWD	8A	4.3 sec	12.7 sec @ 110.1 mph	Motor Trend
+Lexus CT	2011	FWD	CVT	10.1 sec	17.6 sec @ 78.1 mph	Motor Trend
+Lexus ES	2015	FWD	6A	5.8 sec	14.3 sec @ 100 mph	Car and Driver
+Lexus GS 350	2013	RWD	6A	5.4 sec	14.0 sec @ 101 mph	Motor Trend
+Lexus GS 450h	2007	RWD	CVT	5.5 sec	14.1 sec @ 103 mph	Car and Driver
+Lexus GS F	2016	RWD	8A	4.4 sec	12.8 sec @ 112.2 mph	Motor Trend
+Lexus GX 460	2010	4x4	6A	6.9 sec	15.4 sec @ 89.7 mph	Motor Trend
+Lexus IS 200t	2017	RWD	8A	6.5 sec	15.0 sec @ 94 mph	Car and Driver
+Lexus IS 250	2006	RWD	6M	7.1 sec	15.4 sec @ 90 mph	Car and Driver
+Lexus IS 350	2006	RWD	6A	5.1 sec	13.7 sec @ 104 mph	Car and Driver
+Lexus LFA	2012	RWD	6A	3.6 sec	11.7 sec @ 125 mph	Car and Driver
+Lexus LS 460	2014	RWD	8A	5.6 sec	14.1 sec @ 101.5 mph	Motor Trend
+Lexus LS 600h L	2008	AWD	CVT	5.4 sec	13.8 sec @ 106 mph	Car and Driver
+Lexus LX570	2015	AWD	6A	6.5 sec	15.1 sec @ 93 mph	Car and Driver
+Lexus NX	2015	AWD	6A	6.9 sec	15.3 sec @ 92 mph	Car and Driver
+Lexus RC	2015	RWD	8A	5.7 sec	14.2 sec @ 102 mph	Car and Driver
+Lexus RC F	2015	RWD	8A	4.3 sec	12.7 sec @ 112.2 mph	Motor Trend
+Lexus RX 350	2010	AWD	6A	6.7 sec	15.1 sec @ 91 mph	Motor Trend
+Lexus RX 450h	2010	AWD	CVT	6.4 sec	14.8 sec @ 94.4 mph	Motor Trend
+Lincoln Continental	2017	AWD	6A	5.4 sec	13.8 sec @ 101.3 mph	Motor Trend
+Lincoln MKC	2015	AWD	6A	6.5 sec	15.0 sec @ 91.1 mph	Motor Trend
+Lincoln MKS	2013	AWD	6A	5.2 sec	13.9 sec @ 100.8 mph	Motor Trend
+Lincoln MKT	2010	AWD	6A	6.1 sec	14.6 sec @ 95.3 mph	Motor Trend
+Lincoln MKX	2016	AWD	6A	6.0 sec	14.5 sec @ 97 mph	Car and Driver
+Lincoln MKZ	2017	AWD	6A	4.8 sec	13.4 sec @ 105 mph	Car and Driver
+Lincoln Navigator	2015	4x4	6A	6.2 sec	14.8 sec @ 94 mph	Motor Week
+Lotus Elise	2005	RWD	6M	4.0 sec	12.5 sec @ 110.5 mph	Motor Trend
+Lotus Evora	2017	RWD	6M	4.0 sec	12.4 sec @ 111.7 mph	Road & Track
+Maserati Ghibli	2014	AWD	8A	4.6 sec	13.2 sec @ 105.2 mph	Motor Trend
+Maserati GranTurismo	2009	RWD	6A	4.5 sec	12.9 sec @ 110.5 mph	Motor Trend
+Maserati Levante	2017	AWD	8A	4.9 sec	13.5 sec @ 101.9 mph	Motor Trend
+Maserati Quattroporte	2015	RWD	8A	4.2 sec	12.7 sec @ 112 mph	Car and Driver
+Mazda CX-3	2016	AWD	6A	8.1 sec	16.3 sec @ 86 mph	Car and Driver
+Mazda CX-5	2014	AWD	6A	7.6 sec	15.8 sec @ 87 mph	Car and Driver
+Mazda CX-9	2012	FWD	6A	7.1 sec	15.6 sec @ 90.2 mph	Motor Trend
+Mazda Mazda2	2011	FWD	5M	8.5 sec	16.5 sec @ 83.7 mph	Motor Trend
+Mazda Mazda3	2016	FWD	6A	6.8 sec	15.4 sec @ 92 mph	Car and Driver
+Mazda Mazda5	2014	FWD	6M	8.2 sec	16.3 sec @ 85.5 mph	Motor Trend
+Mazda Mazda6	2009	FWD	6A	6.1 sec	14.6 sec @ 96.1 mph	Motor Trend
+Mazda Mazdaspeed3	2010	FWD	6M	5.2 sec	13.9 sec @ 102 mph	Motor Week
+Mazda MX-5 Miata	1994	RWD	5M	4.2 sec	12.6 sec @ 111.6 mph	Motor Trend
+Mazda RX-7	1995	RWD	5M	5.3 sec	14.1 sec @ 99.9 mph	Motor Trend
+Mazda RX-8	2006	RWD	6M	4.9 sec	13.5 sec @ 109 mph	Car and Driver
+McLaren 570S	2016	RWD	7A	2.7 sec	10.7 sec @ 133 mph	Car and Driver
+McLaren 650S	2015	RWD	7A	2.7 sec	10.4 sec @ 136.1 mph	Road & Track
+McLaren 675LT	2016	RWD	7A	3.0 sec	10.5 sec @ 139.7 mph	Motor Trend
+McLaren F1	1994	RWD	6M	3.2 sec	11.1 sec @ 138 mph	Car and Driver
+McLaren MP4-12C	2012	RWD	7A	2.9 sec	10.7 sec @ 134 mph	Car and Driver
+McLaren P1	2015	RWD	7A	2.6 sec	9.8 sec @ 148.9 mph	Motor Trend
+Mercedes-AMG C63	2017	RWD	7A	3.8 sec	12.0 sec @ 119.7 mph	Road & Track
+Mercedes-AMG GT S	2016	RWD	7A	3.0 sec	11.2 sec @ 127 mph	Car and Driver
+Mercedes-Benz B-Class Electric Drive	2014	FWD	1A	6.5 sec	15.1 sec @ 92.7 mph	Motor Trend
+Mercedes-Benz C250	2012	RWD	7A	6.8 sec	15.2 sec @ 92 mph	Car and Driver
+Mercedes-Benz C300	2015	AWD	7A	6.1 sec	14.6 sec @ 96 mph	Car and Driver
+Mercedes-Benz C350	2012	AWD	7A	5.3 sec	14.0 sec @ 101 mph	Car and Driver
+Mercedes-Benz C400	2015	AWD	7A	4.7 sec	13.2 sec @ 107.3 mph	Motor Trend
+Mercedes-Benz C450 AMG	2016	AWD	7A	4.4 sec	13.0 sec @ 107.7 mph	Motor Trend
+Mercedes-Benz CLA-Class	2014	AWD	7A	4.2 sec	12.7 sec @ 108.3 mph	Motor Trend
+Mercedes-Benz CLS400	2015	AWD	7A	5.1 sec	13.7 sec @ 102.5 mph	Motor Trend
+Mercedes-Benz CLS550	2012	RWD	7A	4.2 sec	12.8 sec @ 112 mph	Car and Driver
+Mercedes-Benz CLS63 AMG	2014	AWD	7A	3.2 sec	11.6 sec @ 122 mph	Car and Driver
+Mercedes-Benz E250 BlueTEC	2014	AWD	7A	7.2 sec	15.5 sec @ 88 mph	Motor Week
+Mercedes-Benz E300	2017	RWD	9A	6.5 sec	14.9 sec @ 92.4 mph	Motor Trend
+Mercedes-Benz E350	2014	AWD	7A	5.5 sec	14.2 sec @ 100 mph	Car and Driver
+Mercedes-Benz E400	2015	AWD	7A	4.9 sec	13.5 sec @ 105 mph	Car and Driver
+Mercedes-Benz E550	2012	AWD	7A	4.3 sec	12.8 sec @ 112 mph	Car and Driver
+Mercedes-Benz E63 AMG	2014	AWD	7A	3.2 sec	11.5 sec @ 123.1 mph	Road & Track
+Mercedes-Benz G-class	2005	4x4	5A	4.7 sec	13.2 sec @ 103.2 mph	Motor Trend
+Mercedes-Benz GLA-Class	2015	AWD	7A	4.2 sec	12.8 sec @ 109 mph	Car and Driver
+Mercedes-Benz GLC-Class	2017	AWD	9A	4.5 sec	13.1 sec @ 105 mph	Car and Driver
+Mercedes-Benz GLE-Class	2016	AWD	7A	3.8 sec	12.2 sec @ 115 mph	Car and Driver
+Mercedes-Benz GLK-Class	2013	RWD	7A	5.7 sec	14.4 sec @ 98 mph	Car and Driver
+Mercedes-Benz GLS-Class	2017	AWD	7A	4.3 sec	12.8 sec @ 111 mph	Car and Driver
+Mercedes-Benz M-Class	2012	AWD	7A	4.2 sec	12.6 sec @ 113 mph	Car and Driver
+Mercedes-Benz Metris	2016	RWD	7A	8.4 sec	16.5 sec @ 84 mph	Car and Driver
+Mercedes-Benz S550	2015	AWD	7A	4.2 sec	12.8 sec @ 109.6 mph	Motor Trend
+Mercedes-Benz S600	2007	RWD	5A	4.2 sec	12.6 sec @ 115 mph	Car and Driver
+Mercedes-Benz S63 AMG	2015	AWD	7A	3.6 sec	12.0 sec @ 117.1 mph	Motor Trend
+Mercedes-Benz S65 AMG	2015	RWD	7A	4.1 sec	12.2 sec @ 122 mph	Car and Driver
+Mercedes-Benz SL400	2015	RWD	7A	4.6 sec	13.1 sec @ 109 mph	Car and Driver
+Mercedes-Benz SL550	2013	RWD	7A	4.0 sec	12.5 sec @ 114 mph	Motor Trend
+Mercedes-Benz SL63 AMG	2013	RWD	7A	3.5 sec	11.8 sec @ 123 mph	Motor Trend
+Mercedes-Benz SL65 AMG	2010	RWD	5A	3.6 sec	11.6 sec @ 123.9 mph	Motor Trend
+Mercedes-Benz SLK-Class	2012	RWD	7A	4.1 sec	12.5 sec @ 116 mph	Car and Driver
+Mercedes-Benz SLS AMG GT	2014	RWD	7A	3.2 sec	11.1 sec @ 129.3 mph	Road & Track
+Mercedes-Benz Sprinter	2012	RWD	5A	10.5 sec	17.9 sec @ 75.4 mph	Motor Trend
+Mercedes-Maybach S600	2016	RWD	7A	4.7 sec	13.1 sec @ 112 mph	Car and Driver
+Mini Cooper	2016	FWD	6A	5.8 sec	14.2 sec @ 102 mph	Motor Week
+Mitsubishi 3000GT	1997	AWD	6M	4.8 sec	13.6 sec @ 100.5 mph	Motor Trend
+Mitsubishi i-MiEV	2012	RWD	1A	13.0 sec	20.3 sec @ 67 mph	Car and Driver
+Mitsubishi Lancer	2009	AWD	6A	5.3 sec	14.0 sec @ 97.6 mph	Motor Trend
+Mitsubishi Lancer Evolution	2003	AWD	5M	3.4 sec	11.6 sec @ 120 mph	Car and Driver
+Mitsubishi Mirage	2000	FWD	5M	9.4 sec	17.0 sec @ 80 mph	Car and Driver
+Mitsubishi Outlander	2010	AWD	6A	7.0 sec	15.5 sec @ 92 mph	Motor Week
+Mitsubishi Outlander Sport	2011	FWD	5M	8.3 sec	16.5 sec @ 85 mph	Car and Driver
+Nissan 300ZX	1991	RWD	5M	5.0 sec	13.7 sec @ 102 mph	Car and Driver
+Nissan 350Z	2003	RWD	6M	4.61 sec	12.79 sec @ 106.53 mph	Motor Trend
+Nissan 370Z	2010	RWD	6M	4.5 sec	12.8 sec @ 113 mph	Road & Track
+Nissan Altima	2008	FWD	6M	5.8 sec	14.3 sec @ 101.7 mph	Motor Trend
+Nissan Armada	2017	AWD	7A	5.9 sec	14.7 sec @ 96 mph	Car and Driver
+Nissan Cube	2009	FWD	6M	9.1 sec	17.0 sec @ 81 mph	Car and Driver
+Nissan Frontier	2012	4x4	6M	7.2 sec	15.7 sec @ 89.8 mph	Motor Trend
+Nissan GT-R	2014	AWD	6A	1.53 sec	7.70 sec @ 186.51 mph	Road & Track
+Nissan Juke	2012	AWD	6A	3.6 sec	11.9 sec @ 117.5 mph	Motor Trend
+Nissan Leaf	2011	FWD	1A	9.4 sec	17.2 sec @ 79 mph	Road & Track
+Nissan Maxima	2016	FWD	CVT	5.7 sec	14.2 sec @ 100.5 mph	Motor Trend
+Nissan Murano	2009	AWD	CVT	6.9 sec	15.4 sec @ 92 mph	Car and Driver
+Nissan NV	2012	RWD	5A	8.4 sec	16.4 sec @ 85.7 mph	Motor Trend
+Nissan NV200	2013	FWD	CVT	10.1 sec	17.6 sec @ 78.2 mph	Motor Trend
+Nissan Pathfinder	2012	4x4	5A	7.2 sec	15.6 sec @ 88.2 mph	Motor Trend
+Nissan Quest	2011	FWD	CVT	7.9 sec	16.1 sec @ 91 mph	Car and Driver
+Nissan Rogue	2008	FWD	CVT	8.0 sec	16.2 sec @ 86.2 mph	Motor Trend
+Nissan Sentra	2007	FWD	6M	6.4 sec	14.9 sec @ 93.6 mph	Motor Trend
+Nissan Titan	2005	RWD	5A	6.0 sec	14.5 sec @ 97.7 mph	Motor Trend
+Nissan Versa	2009	FWD	5M	8.9 sec	16.8 sec @ 81.5 mph	Motor Trend
+Nissan Xterra	2006	4x4	6M	7.0 sec	15.7 sec @ 89 mph	Car and Driver
+Plymouth Prowler	2000	RWD	4A	4.5 sec	13.1 sec @ 105.3 mph	Motor Trend
+Pontiac Bonneville	2004	FWD	4A	6.9 sec	15.4 sec @ 91 mph	Car and Driver
+Pontiac Firebird	2000	RWD	6M	5.0 sec	13.5 sec @ 107.4 mph	Motor Trend
+Pontiac G8	2009	RWD	6A	4.0 sec	12.1 sec @ 124 mph	Motor Week
+Pontiac Grand Am	2000	FWD	4A	6.6 sec	14.9 sec @ 91.2 mph	Motor Trend
+Pontiac Grand Prix	2005	FWD	4A	5.7 sec	14.3 sec @ 98 mph	Car and Driver
+Pontiac GTO	2004	RWD	6M	4.3 sec	12.6 sec @ 113.5 mph	Motor Trend
+Pontiac Solstice	2006	RWD	5M	4.4 sec	12.8 sec @ 112 mph	Car and Driver
+Porsche 718 Boxster	2017	RWD	7A	3.6 sec	11.9 sec @ 117 mph	Car and Driver
+Porsche 718 Cayman	2017	RWD	7A	3.6 sec	12.0 sec @ 117 mph	Car and Driver
+Porsche 911	2017	AWD	7A	2.5 sec	10.5 sec @ 131.8 mph	Motor Trend
+Porsche 918 Spyder	2015	AWD	7A	2.2 sec	9.8 sec @ 145 mph	Car and Driver
+Porsche Cayenne	2011	AWD	8A	4.0 sec	12.4 sec @ 113 mph	Car and Driver
+Porsche Macan	2015	AWD	7A	4.2 sec	12.9 sec @ 106.2 mph	Motor Trend
+Porsche Panamera	2012	AWD	7A	3.3 sec	11.5 sec @ 122 mph	Car and Driver
+Ram 3500 Heavy Duty	2011	4x4	6A	8.4 sec	16.4 sec @ 83 mph	Car and Driver
+Ram 4500 Heavy Duty	2014	4x4	6A	12.4 sec	18.9 sec @ 73 mph	Car and Driver
+Ram ProMaster	2014	FWD	6A	8.1 sec	16.5 sec @ 84 mph	Car and Driver
+Rolls-Royce Dawn	2016	RWD	8A	4.3 sec	12.8 sec @ 114 mph	Car and Driver
+Rolls-Royce Ghost	2010	RWD	8A	4.3 sec	12.7 sec @ 112.9 mph	Motor Trend
+Rolls-Royce Phantom	2014	RWD	8A	5.5 sec	13.9 sec @ 100 mph	Motor Trend
+Rolls-Royce Wraith	2014	RWD	8A	4.1 sec	12.5 sec @ 114.0 mph	Motor Trend
+Scion FR-S	2013	RWD	6M	6.2 sec	14.8 sec @ 94.3 mph	Motor Trend
+Scion iA	2016	FWD	6M	8.9 sec	16.8 sec @ 81.9 mph	Motor Trend
+Scion iM	2016	FWD	6M	8.6 sec	16.8 sec @ 84 mph	Car and Driver
+Scion iQ	2012	FWD	CVT	9.6 sec	17.4 sec @ 80 mph	Motor Week
+Scion tC	2006	FWD	5M	5.7 sec	14.2 @ 101.6 mph	Motor Trend
+Scion xB	2008	FWD	5M	7.2 sec	15.6 sec @ 88 mph	Car and Driver
+Scion xD	2008	FWD	5M	7.9 sec	16.4 sec @ 84 mph	Car and Driver
+Smart Fortwo	2013	RWD	1A	9.8 sec	17.5 sec @ 76 mph	Car and Driver
+Subaru BRZ	2017	RWD	6M	6.2 sec	14.8 sec @ 95 mph	Car and Driver
+Subaru Forester	2004	AWD	5M	5.3 sec	13.8 sec @ 97 mph	Car and Driver
+Subaru Impreza	2008	AWD	5M	7.6 sec	15.9 sec @ 87 mph	Car and Driver
+Subaru Impreza WRX	2003	AWD	5M	4.4 sec	12.9 sec @ 107 mph	Car and Driver
+Subaru Legacy	2010	AWD	6M	5.3 sec	13.9 sec @ 99.5 mph	Motor Trend
+Subaru Outback	2010	AWD	6M	5.7 sec	14.2 sec @ 96.4 mph	Motor Trend
+Subaru XV Crosstrek	2013	AWD	5M	8.1 sec	16.5 sec @ 83 mph	Car and Driver
+Tesla Model S	2015	AWD	1A	2.6 sec	10.9 sec @ 122.7 mph	Motor Trend
+Tesla Model X	2016	AWD	1A	3.2 sec	11.7 sec @ 116 mph	Motor Trend
+Tesla Roadster	2010	RWD	1A	3.7 sec	12.6 sec @ 104 mph	Road & Track
+Toyota 4Runner	2005	4x4	5A	7.2 sec	15.7 sec @ 88 mph	Car and Driver
+Toyota 86	2017	RWD	6M	6.2 sec	14.8 sec @ 95 mph	Car and Driver
+Toyota Avalon	2013	FWD	6A	6.1 sec	14.5 sec @ 99 mph	Car and Driver
+Toyota Camry	2012	FWD	6A	5.8 sec	14.2 sec @ 100.6 mph	Motor Trend
+Toyota Corolla	2005	FWD	6M	7.1 sec	15.8 sec @ 90 mph	Car and Driver
+Toyota FJ Cruiser	2009	4x4	5A	7.3 sec	15.8 sec @ 87 mph	Car and Driver
+Toyota Highlander	2006	AWD	CVT	6.6 sec	15.1 sec @ 91.3 mph	Motor Trend
+Toyota Land Cruiser	2008	4x4	6A	6.5 sec	15.1 sec @ 94 mph	Car and Driver
+Toyota Mirai	2016	FWD	1A	8.9 sec	16.9 sec @ 81.1 mph	Motor Trend
+Toyota Prius	2016	FWD	CVT	9.4 sec	17.2 sec @ 81 mph	Car and Driver
+Toyota RAV4	2006	AWD	5A	6.3 sec	14.9 sec @ 94 mph	Car and Driver
+Toyota Sequoia	2008	4x4	6A	6.2 sec	14.7 sec @ 93.7 mph	Motor Trend
+Toyota Sienna	2017	AWD	8A	7.0 sec	15.4 sec @ 92 mph	Car and Driver
+Toyota Supra	1993	RWD	6M	4.6 sec	13.1 sec @ 109 mph	Car and Driver
+Toyota Tacoma	2005	RWD	5A	6.8 sec	15.2 sec @ 90.1 mph	Motor Trend
+Toyota Tundra	2008	RWD	6A	4.4 sec	13.0 sec @ 106.3 mph	Motor Trend
+Toyota Venza	2009	FWD	6A	6.5 sec	14.9 sec @ 94 mph	Car and Driver
+Toyota Yaris	2012	FWD	5M	8.7 sec	16.8 sec @ 81.3 mph	Motor Trend
+Volkswagen Beetle	2013	AWD	6M	3.9 sec	12.6 sec @ 110.2 mph	Motor Trend
+Volkswagen CC	2009	AWD	6A	6.1 sec	14.6 sec @ 98 mph	Motor Week
+Volkswagen Eos	2007	FWD	6A	6.5 sec	15.1 sec @ 94 mph	Car and Driver
+Volkswagen Golf	2008	AWD	6M	3.5 sec	11.9 sec @ 123.2 mph	Motor Trend
+Volkswagen GTI	2015	FWD	6M	5.6 sec	14.2 sec @ 100 mph	Car and Driver
+Volkswagen Jetta	2016	FWD	6M	6.3 sec	14.9 sec @ 96.3 mph	Motor Trend
+Volkswagen Passat	2012	FWD	6A	5.7 sec	14.2 sec @ 100.9 mph	Motor Trend
+Volkswagen Tiguan	2010	FWD	6A	7.1 sec	15.5 sec @ 91 mph	Car and Driver
+Volkswagen Touareg	2011	AWD	8A	5.9 sec	--- -- sec @ -- -- mph	Motor Week
+Volvo S60	2015	AWD	6A	4.5 sec	13.1 sec @ 107 mph	Car and Driver
+Volvo S80	2007	AWD	6A	5.7 sec	14.4 sec @ 98 mph	Car and Driver
+Volvo S90	2017	AWD	8A	5.6 sec	14.1 sec @ 98.9 mph	Motor Trend
+Volvo V60	2015	AWD	6A	4.9 sec	13.5 sec @ 105 mph	Car and Driver
+Volvo XC60	2012	AWD	6A	5.7 sec	14.3 sec @ 98.4 mph	Motor Trend
+Volvo XC70	2010	AWD	6A	6.3 sec	--- -- sec @ --- -- mph	Motor Week
+Volvo XC90	2016	AWD	8A	5.3 sec	14.0 sec @ 98 mph	Car and Driver
