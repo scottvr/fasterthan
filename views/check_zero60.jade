@@ -1,9 +1,9 @@
 extends layout
-link(href='/fasterthan/foo.css', rel='stylesheet')
+link(href='/foo.css', rel='stylesheet')
 
 block content
 	h1= title
-	form#formTime(name="timeform",method="post",action="/fasterthan/check_zero60")
+	form#formTime(name="timeform",method="post",action="/check_zero60")
 		p. 
 			enter time as numerals and (optional) decimal point only
 		p

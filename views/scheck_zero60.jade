@@ -1,8 +1,8 @@
 extends layout
-link(href='/fasterthan/foocss.txt', rel='stylesheet')
+link(href='/foocss.txt', rel='stylesheet')
 
 block content
 	h1= title
-	form#formTime(name="timeform",method="post",action="/fasterthan/scheck_zero60")
+	form#formTime(name="timeform",method="post",action="/scheck_zero60")
 		input#inputTime(type="text", placeholder="time", name="inputTime")
 		button#btnSubmit(type="submit") submit
